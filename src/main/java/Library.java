@@ -15,6 +15,10 @@ public class Library {
     }
 
     public void addBook(Book book){
-        bookStock.add(book);
+        if (bookStock.size() < capacity) {
+            bookStock.add(book);
+        } else {
+            System.out.println("Library stock is full, no space for new books.");
+        }
     }
 }
