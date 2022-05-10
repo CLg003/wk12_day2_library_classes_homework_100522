@@ -9,7 +9,7 @@ public class LibraryTest {
 
     @Before
     public void before(){
-        library = new Library(5);
+        library = new Library(10);
     }
 
     @Test
