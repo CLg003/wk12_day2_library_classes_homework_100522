@@ -13,4 +13,8 @@ public class Library {
     public int bookCount(){
         return bookStock.size();
     }
+
+    public void addBook(Book book){
+        bookStock.add(book);
+    }
 }
