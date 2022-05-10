@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Library {
 
@@ -25,5 +26,18 @@ public class Library {
     public void removeBook(Book book){
         int index = bookStock.indexOf(book);
         bookStock.remove(index);
+    }
+
+    public HashMap<String, Integer> bookCountByGenre(){
+        HashMap<String, Integer> genreBookCount = new HashMap<>();
+        for (Book book : this.bookStock) {
+            String genre = book.getGenre();
+            if (genreBookCount.keySet().contains(genre)) {
+                genreBookCount.put(genre, genreBookCount.get(genre) + 1);
+            } else {
+                genreBookCount.put(genre, 1);
+            }
+        }
+        return genreBookCount;
     }
 }

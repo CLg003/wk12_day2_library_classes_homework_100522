@@ -1,8 +1,9 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.HashMap;
+
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 
 public class LibraryTest {
 
@@ -18,7 +19,6 @@ public class LibraryTest {
     private Book book9;
     private Book book10;
     private Book book11;
-    private Borrower borrower;
 
     @Before
     public void before(){
@@ -27,14 +27,13 @@ public class LibraryTest {
         book2 = new Book("The Shining", "Stephen King", "Horror");
         book3 = new Book("Summer", "Edith Wharton", "Classic");
         book4 = new Book("The Haunting of Hill House", "Shirley Jackson", "Horror");
-        book5 = new Book("A Thousand Splendid Suns", "Khaled Hosseini", "General Fiction");
-        book6 = new Book("Half of a Yellow Sun", "Chimamanda Ngozi Adichie", "General Fiction");
+        book5 = new Book("A Thousand Splendid Suns", "Khaled Hosseini", "General");
+        book6 = new Book("Half of a Yellow Sun", "Chimamanda Ngozi Adichie", "General");
         book7 = new Book("Brave New World", "Aldous Huxley", "Sci-Fi");
         book8 = new Book("Ender's Game", "Orson Scott Card", "Sci-Fi");
-        book9 = new Book("The Girl With the Louding Voice", "Abi Dare", "General Fiction");
+        book9 = new Book("The Girl With the Louding Voice", "Abi Dare", "General");
         book10 = new Book("Rebecca", "Daphne du Maurier", "Classic");
         book11 = new Book("The Notebook", "Nicholas Sparks", "Romance");
-        borrower = new Borrower("Rachel");
 
     }
 
@@ -70,6 +69,25 @@ public class LibraryTest {
         library.addBook(book6);
         library.removeBook(book6);
         assertEquals(0, library.bookCount());
+    }
+
+    @Test
+    public void canCountBooksByGenre(){
+        library.addBook(book1);
+        library.addBook(book2);
+        library.addBook(book3);
+        library.addBook(book4);
+        library.addBook(book5);
+        library.addBook(book6);
+        library.addBook(book7);
+        library.addBook(book8);
+        library.addBook(book9);
+        library.addBook(book10);
+        HashMap genreCount = library.bookCountByGenre();
+        assertEquals(3, genreCount.get("General"));
+        assertEquals(2, genreCount.get("Sci-Fi"));
+        assertEquals(3, genreCount.get("Classic"));
+        assertEquals(2, genreCount.get("Horror"));
     }
 
 }
