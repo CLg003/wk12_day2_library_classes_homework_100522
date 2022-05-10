@@ -2,6 +2,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 public class LibraryTest {
 
@@ -17,6 +18,7 @@ public class LibraryTest {
     private Book book9;
     private Book book10;
     private Book book11;
+    private Borrower borrower;
 
     @Before
     public void before(){
@@ -32,6 +34,8 @@ public class LibraryTest {
         book9 = new Book("The Girl With the Louding Voice", "Abi Dare", "General Fiction");
         book10 = new Book("Rebecca", "Daphne du Maurier", "Classic");
         book11 = new Book("The Notebook", "Nicholas Sparks", "Romance");
+        borrower = new Borrower("Rachel");
+
     }
 
     @Test
@@ -59,6 +63,13 @@ public class LibraryTest {
         library.addBook(book10);
         library.addBook(book11);
         assertEquals(10, library.bookCount());
+    }
+
+    @Test
+    public void canRemoveBook(){
+        library.addBook(book6);
+        library.removeBook(book6);
+        assertEquals(0, library.bookCount());
     }
 
 }

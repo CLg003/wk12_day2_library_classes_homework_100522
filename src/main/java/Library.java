@@ -21,4 +21,9 @@ public class Library {
             System.out.println("Library stock is full, no space for new books.");
         }
     }
+
+    public void removeBook(Book book){
+        int index = bookStock.indexOf(book);
+        bookStock.remove(index);
+    }
 }

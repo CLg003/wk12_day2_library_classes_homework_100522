@@ -18,4 +18,10 @@ public class Borrower {
         return loans.size();
     }
 
+    public void borrowBook(Book book, Library library){
+        library.removeBook(book);
+        loans.add(book);
+
+    }
+
 }
